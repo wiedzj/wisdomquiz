@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylestart.css">
+    <title>Welkom bij de wijsheidsquiz!</title>
+</head>
+<body>
+    <h1 id="welcome">Welkom bij de wijsheidsquiz!</h1>
+    <section>
+    <p id="information" hidden="true">Leuk dat je de quiz wilt maken! Je krijgt zodadelijk steeds een vraag waarop alle antwoorden mogelijk zijn, 
+        jij bepaalt wat jij de beste vindt. Kies er 3 uit, met op nummer 1 de beste. Kies bij elk antwoord ook de uitspraak die jij het beste vindt passen. 
+        Met de pijltjes kan je ze allemaal bekijken. Als je per ongeluk een foutje maakt kan je bovenin op "Opnieuw" klikken,
+    als je klaar bent voor de volgende vraag, klik je op "Klaar". Aan het eind van de quiz kan je jouw antwoorden opslaan en er over praten met je klasgenoten. Veel plezier! </p>
+    </section>
+    <p id="what-name">Hoe heet je?</p>
+
+    <input id="student-name" type="text">
+
+    <button id="submit-btn" onclick="setName()">Ok</button>
+
+    <button id="start-quiz" hidden="true" onclick="location.href='quiz.html';">Beginnen!</button>
+
+
+    <script>
+    function setName() {
+        var name = document.getElementById("student-name").value;
+        if (name.length > 0){   
+            localStorage.setItem("name", name);
+            document.body.removeChild(document.getElementById("what-name"));
+            document.body.removeChild(document.getElementById("student-name"));  
+            document.body.removeChild(document.getElementById("submit-btn"));    
+            document.getElementById("information").hidden = false;  
+            document.getElementById("welcome").innerHTML = `Welkom ${name}!`;
+            document.getElementById("start-quiz").hidden = false;  
+            console.log(name);
+        }
+    }
+    </script>
+  
+   
+</body>
+</html>
